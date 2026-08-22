@@ -572,7 +572,7 @@
 
     <!-- Main Card Container -->
     <div class="main-card">
-
+        
         <div class="title-area">
             <h1>Image Compressor</h1>
             <p>Compress PNG, JPEG & WebP images locally with optimal quality</p>
@@ -671,7 +671,7 @@
         <!-- Hidden FAQ Section -->
         <div class="faq-section" id="faqSection">
             <h2 class="section-title">Frequently Asked Questions</h2>
-
+            
             <details>
                 <summary>Is it safe to compress my images here?</summary>
                 <p>Yes, 100%. All processing happens locally in your web browser using HTML canvas technology. Your images are never uploaded to any remote server.</p>
@@ -691,7 +691,7 @@
         <!-- Feedback Section -->
         <div class="feedback-section">
             <h2 class="section-title">Send Feedback</h2>
-
+            
             <div class="rating-stars" id="ratingStars">
                 <button class="star-btn" data-value="1">⭐</button>
                 <button class="star-btn" data-value="2">⭐</button>
@@ -735,7 +735,7 @@
         // Theme Switcher
         const themeToggle = document.getElementById('themeToggle');
         const savedTheme = localStorage.getItem('clean-app-theme') || 'light';
-
+        
         if (savedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             themeToggle.textContent = 'Light Mode';
@@ -800,7 +800,7 @@
 
         function updateEstimation() {
             if (!currentImage.src) return;
-
+            
             const canvas = document.createElement('canvas');
             canvas.width = parseInt(imgWidth.value) || currentImage.width;
             canvas.height = parseInt(imgHeight.value) || currentImage.height;
@@ -820,7 +820,7 @@
             originalFileName = file.name.replace(/\.[^/.]+$/, "");
             fileName.textContent = file.name;
             origSizeEl.textContent = `${(file.size / 1024).toFixed(2)} KB`;
-
+            
             dropZone.style.display = 'none';
             fileBadge.style.display = 'flex';
             sizeStats.style.display = 'flex';
@@ -857,7 +857,7 @@
 
         qualitySlider.addEventListener('input', (e) => {
             qualityValue.textContent = `${e.target.value}%`;
-            targetKb.value = '';
+            targetKb.value = ''; 
             updateEstimation();
         });
 
@@ -901,16 +901,16 @@
                     const targetBytes = parseFloat(targetKb.value) * 1024;
                     let minQ = 0.0, maxQ = 1.0;
                     let bestDataUrl = canvas.toDataURL(format, 1.0);
-
+                    
                     if (getFileSizeKB(bestDataUrl) * 1024 > targetBytes) {
                         for (let i = 0; i < 7; i++) {
                             let midQ = (minQ + maxQ) / 2;
                             let tempUrl = canvas.toDataURL(format, midQ);
                             if (getFileSizeKB(tempUrl) * 1024 <= targetBytes) {
                                 bestDataUrl = tempUrl;
-                                minQ = midQ;
+                                minQ = midQ; 
                             } else {
-                                maxQ = midQ;
+                                maxQ = midQ; 
                             }
                         }
                     }
@@ -959,7 +959,7 @@
                 return;
             }
 
-            if (DISCORD_WEBHOOK_URL === 'https://discord.com/api/webhooks/1540693379296403546/CJAbD1FC0w8YA9t4EhRnDgLOzbFhXV4MIBKIAcCuFvUu0FVfB84O9f38ogJo2IvEXND-') {
+            if (DISCORD_WEBHOOK_URL === 'YOUR_DISCORD_WEBHOOK_URL_HERE') {
                 alert('Please replace YOUR_DISCORD_WEBHOOK_URL_HERE in the script with your actual Discord Webhook URL!');
                 return;
             }
@@ -983,7 +983,7 @@
             };
 
             try {
-                const response = await fetch(https://discord.com/api/webhooks/1540693379296403546/CJAbD1FC0w8YA9t4EhRnDgLOzbFhXV4MIBKIAcCuFvUu0FVfB84O9f38ogJo2IvEXND-, {
+                const response = await fetch(DISCORD_WEBHOOK_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
